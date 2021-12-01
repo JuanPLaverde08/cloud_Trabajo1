@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BacklogRepository extends JpaRepository<Backlog, Long> {
-	public Backlog[] getBacklog();
-	public Backlog getBacklog(int id);
+	//public Backlog[] getBacklog();
+	//public Backlog getBacklog(int id);
 //
 }
