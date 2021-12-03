@@ -7,10 +7,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TaskServiceImpl implements  TaskService{
 
     @Autowired
     private ProjectTaskRepository repository;
+
+    @Override
+    public List<ProjectTask> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public boolean isNewTask(ProjectTask task) {
+        List<ProjectTask> pt = repository.getTaskByNameAndProject(task.getName(), task.getProjectIdentifier());
+        return pt.isEmpty();
+    }
+
 
     @Override
     public ProjectTask create(ProjectTask proyectTask) {

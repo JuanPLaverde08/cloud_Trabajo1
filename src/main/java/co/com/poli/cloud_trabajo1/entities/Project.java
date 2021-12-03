@@ -3,7 +3,6 @@ package co.com.poli.cloud_trabajo1.entities;
 import java.util.Date;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import co.com.poli.cloud_trabajo1.helper.Deserializer;
@@ -15,26 +14,25 @@ import lombok.*;
 @Table(name = "Projects")
 public class Project extends BaseEntity {
 
-	@Column(name = "projectName")
+	@Column(name = "project_name")
 	private String projectName;
 
-	@Column(name = "projectIdentifier")
+	@Column(name = "project_identifier")
 	private String projectIdentifier;
 
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "startDate")
+	@Column(name = "start_date")
 	@JsonDeserialize(using = Deserializer.class)
 	private Date startDate;
 
-	@Column(name = "endDate")
+	@Column(name = "end_date")
 	@JsonDeserialize(using = Deserializer.class)
 	private Date endDate;
 
-	@JsonBackReference
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "backlog_id")
+	@OneToOne
+	@JoinColumn(name = "backlog_id", referencedColumnName = "id")
 	private Backlog backlog;
 
 	@Override

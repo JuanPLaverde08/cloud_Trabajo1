@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name="projectTaks")
+@Table(name="Project_Task")
 public class ProjectTask extends BaseEntity {
 
 	@Column(name = "name")
@@ -19,6 +19,9 @@ public class ProjectTask extends BaseEntity {
 
 	@Column(name = "summary")
 	private String summary;
+
+	@Column(name = "acceptance_criteria")
+	private String acceptanceCriteria;
 
 	@Column(name = "status")
 	private String status;
@@ -29,20 +32,20 @@ public class ProjectTask extends BaseEntity {
 	@Column(name = "hours")
 	private double hours;
 
-	@Column(name = "startDate")
+	@Column(name = "start_date")
 	@JsonDeserialize(using = Deserializer.class)
 	private Date startDate;
 
-	@Column(name = "endDate")
+	@Column(name = "end_date")
 	@JsonDeserialize(using = Deserializer.class)
 	private Date endDate;
 
-	@Column(name = "projectIdentifier")
+	@Column(name = "project_identifier")
 	private String projectIdentifier;
 
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "project_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "backlog_id", referencedColumnName="id")
 	private Backlog backlog;
 
 	@Override

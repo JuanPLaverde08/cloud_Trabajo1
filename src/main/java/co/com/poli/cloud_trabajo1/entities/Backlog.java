@@ -3,7 +3,6 @@ package co.com.poli.cloud_trabajo1.entities;
 import java.util.List;
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 @Getter
@@ -12,14 +11,12 @@ import lombok.*;
 @Table(name = "Backlog")
 public class Backlog extends BaseEntity {
 
-	@JsonBackReference
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "project_id")
+	@OneToOne
+	@JoinColumn(name = "project_id", referencedColumnName="id")
 	private Project project;
 
 	@JsonManagedReference
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "projectTask_id")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ProjectTask> projectTask;
 
 	@Override

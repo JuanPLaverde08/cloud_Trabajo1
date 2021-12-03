@@ -11,7 +11,7 @@ import java.text.ParseException;
 import java.io.IOException;
 
 public class Deserializer extends StdDeserializer<Date> {
-   private static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+   private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
    public Deserializer() {
       this(null);
    }
