@@ -38,7 +38,7 @@ public class ProjectTask extends BaseEntity {
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "project_id")
-	private String backlog;
+	private Backlog backlog;
 
 	@Override
 	public boolean equals(Object o) {
