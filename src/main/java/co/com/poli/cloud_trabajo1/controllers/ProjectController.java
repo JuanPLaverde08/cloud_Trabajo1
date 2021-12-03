@@ -7,16 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import co.com.poli.cloud_trabajo1.entities.Project;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/project")
 public class ProjectController {
-
-	/*@GetMapping()
-	public String getAll() {
-		// return projects, JSON
-		return String.format("Hello %s :)", "some");
-	}*/
 
 	@Autowired
 	private ProyectService service;

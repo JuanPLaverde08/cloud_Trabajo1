@@ -2,6 +2,7 @@ package co.com.poli.cloud_trabajo1.entities;
 
 import java.util.List;
 import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
@@ -16,7 +17,7 @@ public class Backlog extends BaseEntity {
 	@JoinColumn(name = "project_id")
 	private Project project;
 
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "projectTask_id")
 	private List<ProjectTask> projectTask;

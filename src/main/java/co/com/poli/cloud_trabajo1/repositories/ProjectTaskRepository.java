@@ -6,7 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProjectTaskRepository extends JpaRepository<ProjectTask, Long> {
-//
-	//public ProjectTask[] getProjectTask();
-	//public ProjectTask getProjectTask(int id);
 }
