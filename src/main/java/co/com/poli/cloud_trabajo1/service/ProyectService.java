@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ProyectService {
 
+    boolean isNewProject(Project proyect);
     List<Project> findAll();
     Project create(Project proyect);
 
