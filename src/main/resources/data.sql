@@ -1,7 +1,7 @@
 INSERT INTO
   Backlog(id, project_identifier)
 VALUES
-  (1, 'Project_001');
+  (1, '001_projectt');
 INSERT INTO
   Projects(
     id,

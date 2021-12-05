@@ -19,7 +19,7 @@ public class Backlog extends BaseEntity {
 	private Project project;
 
 	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "backlog")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "backlog", cascade = CascadeType.ALL)
 	private List<ProjectTask> projectTask;
 
 	@Override

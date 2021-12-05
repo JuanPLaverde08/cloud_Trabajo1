@@ -44,7 +44,7 @@ public class ProjectTask extends BaseEntity {
 	private String projectIdentifier;
 
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "backlog_id", referencedColumnName="id")
 	private Backlog backlog;
 
