@@ -2,7 +2,7 @@ package co.com.poli.cloud_trabajo1.entities;
 
 import java.util.List;
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 
 @Getter
@@ -11,12 +11,15 @@ import lombok.*;
 @Table(name = "Backlog")
 public class Backlog extends BaseEntity {
 
-	@OneToOne
-	@JoinColumn(name = "project_id", referencedColumnName="id")
+	@Column(name = "project_identifier")
+	private String projectIdentifier;
+
+	@OneToOne(mappedBy = "backlog")
+	@JsonIgnoreProperties("backlog")
 	private Project project;
 
 	@JsonManagedReference
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "backlog")
 	private List<ProjectTask> projectTask;
 
 	@Override

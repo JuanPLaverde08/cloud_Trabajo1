@@ -4,6 +4,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import co.com.poli.cloud_trabajo1.helper.Deserializer;
 import lombok.*;
@@ -31,8 +32,9 @@ public class Project extends BaseEntity {
 	@JsonDeserialize(using = Deserializer.class)
 	private Date endDate;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "backlog_id", referencedColumnName = "id")
+	@JsonIgnoreProperties("project")
 	private Backlog backlog;
 
 	@Override
