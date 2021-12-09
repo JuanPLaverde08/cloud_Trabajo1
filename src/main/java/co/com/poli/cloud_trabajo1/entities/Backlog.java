@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 @Table(name = "Backlog")
 public class Backlog extends BaseEntity {
 
-	@NotEmpty
+	@NotBlank
 	@Column(name = "project_identifier")
 	private String projectIdentifier;
 

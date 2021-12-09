@@ -2,10 +2,16 @@ package co.com.poli.cloud_trabajo1.entities;
 
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
+
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import co.com.poli.cloud_trabajo1.helper.Deserializer;
+import jdk.nashorn.internal.ir.annotations.Immutable;
 import lombok.*;
 
 @Getter
@@ -27,9 +33,14 @@ public class ProjectTask extends BaseEntity {
 	private String status;
 
 	@Column(name = "priority")
+	@Min(1)
+	@Max(5)
 	private int priority;
 
+	@Positive(message = "Value must be positive")
 	@Column(name = "hours")
+	@Min(1)
+	@Max(8)
 	private double hours;
 
 	@Column(name = "start_date")
@@ -41,6 +52,7 @@ public class ProjectTask extends BaseEntity {
 	private Date endDate;
 
 	@Column(name = "project_identifier")
+	@Immutable
 	private String projectIdentifier;
 
 	@JsonBackReference

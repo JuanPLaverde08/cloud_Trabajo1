@@ -2,12 +2,13 @@ package co.com.poli.cloud_trabajo1.entities;
 
 import java.util.Date;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import co.com.poli.cloud_trabajo1.helper.Deserializer;
+import jdk.nashorn.internal.ir.annotations.Immutable;
 import lombok.*;
 
 @Getter
@@ -17,11 +18,13 @@ import lombok.*;
 public class Project extends BaseEntity {
 
 	@NotEmpty(message="required")
-	@Column(name = "project_name")
+	@Column(name = "project_name",unique=true)
 	private String projectName;
 
 	@NotEmpty(message="required")
-	@Column(name = "project_identifier")
+	@Column(name = "project_identifier",unique=true)
+	@Immutable
+	@Size(max= 7, min= 5)
 	private String projectIdentifier;
 
 	@NotEmpty(message="required")
