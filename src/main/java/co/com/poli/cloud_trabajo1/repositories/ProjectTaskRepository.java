@@ -15,4 +15,9 @@ public interface ProjectTaskRepository extends JpaRepository<ProjectTask, Long> 
 			@Param("name") String name,
 			@Param("projectIdentifier") String projectIdentifier
 	);
+
+	@Query("SELECT pt FROM ProjectTask as pt WHERE pt.projectIdentifier = :projectIdentifier")
+	List<ProjectTask> getTasksByProject(
+			@Param("projectIdentifier") String projectIdentifier
+	);
 }
