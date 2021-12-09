@@ -57,4 +57,18 @@ public class TaskServiceImpl implements TaskService {
         return hours;
     }
 
+    @Override
+    public boolean deleteTaskByIdAndProject(String taskId, String projectIdentifier) {
+        ProjectTask task = repository.getByIdAndProjectIdentifier(new Long(taskId), projectIdentifier);
+
+        if (task == null) {
+            return false;
+        }
+
+        task.setStatus("Deleted");
+        repository.save(task);
+
+        return true;
+    }
+
 }

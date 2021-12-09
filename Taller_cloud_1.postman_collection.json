@@ -287,7 +287,38 @@
 						{
 							"key": "status",
 							"value": "NotStarted",
-							"description": "task status 'NotStarted' 'InProgress' 'Deleted' 'Close'"
+							"description": "task status 'NotStarted' 'InProgress' 'Deleted' 'Completed'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a task by id and projectIdentifier",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{uri}}:{{port}}/task/:taskId/:projectIdentifier",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{uri}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"task",
+						":taskId",
+						":projectIdentifier"
+					],
+					"variable": [
+						{
+							"key": "taskId",
+							"value": "1"
+						},
+						{
+							"key": "projectIdentifier",
+							"value": "001_p"
 						}
 					]
 				}

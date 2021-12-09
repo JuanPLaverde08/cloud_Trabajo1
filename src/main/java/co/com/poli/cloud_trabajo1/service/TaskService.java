@@ -17,4 +17,6 @@ public interface TaskService {
 
     double getTasksHoursByProjectAndStatus(String projectIdentifier, String status);
 
+    boolean deleteTaskByIdAndProject(String taskId, String projectIdentifier);
+
 }

@@ -65,4 +65,22 @@ public class TaskController {
 
         return service.getTasksHoursByProjectAndStatus(projectIdentifier, status);
     }
+
+    @DeleteMapping("/{taskId}/{projectIdentifier}")
+    public boolean deleteTask(@PathVariable String taskId, @PathVariable String projectIdentifier) {
+        if (projectIdentifier == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Project identifier is required");
+        }
+        if (taskId == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status is required");
+        }
+
+        boolean deleted = service.deleteTaskByIdAndProject(taskId, projectIdentifier);
+
+        if (!deleted) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong parameters provided");
+        }
+
+        return deleted;
+    }
 }
