@@ -44,4 +44,27 @@ public class TaskController {
 
         return service.getTasksByProject(projectIdentifier);
     }
+
+    @GetMapping("/hours/project/{projectIdentifier}")
+    public double getTasksByProjectHours(@PathVariable String projectIdentifier) {
+        if (projectIdentifier == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Project identifier is required");
+        }
+
+        return service.getTasksByProjectHours(projectIdentifier);
+    }
+
+    @GetMapping("/hours/project/{projectIdentifier}/{status}")
+    public double getTasksHoursByProjectAndStatus(@PathVariable String projectIdentifier,@PathVariable String status) {
+        if (projectIdentifier == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Project identifier is required");
+        }
+        if (status == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status is required");
+        }
+
+        return service.getTasksHoursByProjectAndStatus(projectIdentifier,status);
+    }
+
+    
 }

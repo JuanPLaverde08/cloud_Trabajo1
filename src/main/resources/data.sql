@@ -16,7 +16,7 @@ VALUES
   (
     1,
     'First Project',
-    '001_projectt',
+    '001_p',
     'This is the first defaul project',
     '2021-12-21',
     '2022-12-1',
@@ -42,11 +42,11 @@ VALUES
     'First task',
     'Add default data to DB',
     'To look good',
-    'Not Started',
+    'NotStarted',
     1,
     1,
     '2021-12-21',
     '2021-12-22',
-    '001_projectt',
+    '001_p',
     1
   );

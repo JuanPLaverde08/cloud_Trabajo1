@@ -32,7 +32,33 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<ProjectTask> getTasksByProject(String projectIdentifier) {
-        System.out.println(projectIdentifier);
         return repository.getTasksByProject(projectIdentifier);
     }
+
+    @Override
+    public double getTasksByProjectHours( String projectIdentifier) {
+        List<ProjectTask> tasks =  repository.getTasksByProject(projectIdentifier);
+        double hours = 0;
+        for(int i=0;i<tasks.size();i++){
+            hours+= tasks.get(i).getHours();
+        }
+        return hours;
+    }
+
+    @Override
+    public double getTasksHoursByProjectAndStatus( String projectIdentifier, String status) {
+        List<ProjectTask> tasks =  repository.getTasksByProject(projectIdentifier);
+        double hours = 0;
+        for(int i=0;i<tasks.size();i++){
+            ProjectTask task = tasks.get(i);
+            if(task.getStatus()== status){
+                hours+= task.getHours();
+            }
+        }
+        return hours;
+    }
+
+
+
+
 }
