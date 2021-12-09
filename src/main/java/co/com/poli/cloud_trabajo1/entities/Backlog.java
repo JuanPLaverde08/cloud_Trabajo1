@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -11,6 +12,7 @@ import lombok.*;
 @Table(name = "Backlog")
 public class Backlog extends BaseEntity {
 
+	@NotEmpty
 	@Column(name = "project_identifier")
 	private String projectIdentifier;
 

@@ -2,6 +2,7 @@ package co.com.poli.cloud_trabajo1.entities;
 
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,12 +16,15 @@ import lombok.*;
 @Table(name = "Projects")
 public class Project extends BaseEntity {
 
+	@NotEmpty(message="required")
 	@Column(name = "project_name")
 	private String projectName;
 
+	@NotEmpty(message="required")
 	@Column(name = "project_identifier")
 	private String projectIdentifier;
 
+	@NotEmpty(message="required")
 	@Column(name = "description")
 	private String description;
 
