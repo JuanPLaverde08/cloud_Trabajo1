@@ -17,17 +17,17 @@ import lombok.*;
 @Table(name = "Projects")
 public class Project extends BaseEntity {
 
-	@NotEmpty(message="required")
-	@Column(name = "project_name",unique=true)
+	@NotEmpty(message = "required")
+	@Column(name = "project_name", unique = true)
 	private String projectName;
 
-	@NotEmpty(message="required")
-	@Column(name = "project_identifier",unique=true)
+	@NotEmpty(message = "required")
+	@Column(name = "project_identifier", unique = true)
 	@Immutable
-	@Size(max= 7, min= 5)
+	@Size(max = 7, min = 5)
 	private String projectIdentifier;
 
-	@NotEmpty(message="required")
+	@NotEmpty(message = "required")
 	@Column(name = "description")
 	private String description;
 
@@ -41,7 +41,7 @@ public class Project extends BaseEntity {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "backlog_id", referencedColumnName = "id")
-	@JsonIgnoreProperties("project")
+	@JsonIgnoreProperties(value = { "project" }, allowSetters = true)
 	private Backlog backlog;
 
 	@Override

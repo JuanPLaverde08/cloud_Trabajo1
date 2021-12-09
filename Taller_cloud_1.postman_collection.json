@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "702bd78d-de9d-463e-aa56-6dc0e619ca02",
-		"name": "Taller cloud 1",
+		"_postman_id": "2f9b37ef-5c87-4afa-b9f1-39301d4c3ab5",
+		"name": "Taller_cloud_1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -77,7 +77,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"projectName\": \"Test project 123322322\",\r\n    \"projectIdentifier\": \"project10022333222\",\r\n    \"description\": \"Trying to learn spring\",\r\n    \"startDate\": \"2021-12-21\",\r\n    \"endDate\": \"2022-12-1\",\r\n    \"backlog\": {\r\n        \"projectIdentifier\": \"project10022333222\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"projectName\": \"Test project 2\",\r\n    \"projectIdentifier\": \"002_p\",\r\n    \"description\": \"Trying to learn spring\",\r\n    \"startDate\": \"2021-12-21\",\r\n    \"endDate\": \"2022-12-1\",\r\n    \"backlog\": {\r\n        \"projectIdentifier\": \"002_p\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -156,7 +156,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Test task 122\",\r\n    \"summary\": \"Send a test task\",\r\n    \"acceptanceCriteria\": \"To be accepted\",\r\n    \"status\": \"Not Stared\",\r\n    \"priority\": 1,\r\n    \"hours\": \"3\",\r\n    \"startDate\": \"2021-12-21\",\r\n    \"endDate\": \"2021-12-23\",\r\n    \"projectIdentifier\": \"001_projectt\",\r\n    \"backlog\": {\r\n        \"id\": 1\r\n    }\r\n}",
+					"raw": "{\r\n    \"name\": \"Test task 312\",\r\n    \"summary\": \"Send a test task II\",\r\n    \"acceptanceCriteria\": \"To be accepted\",\r\n    \"status\": \"NotStarted\",\r\n    \"priority\": 1,\r\n    \"hours\": 3.5,\r\n    \"startDate\": \"2021-12-21\",\r\n    \"endDate\": \"2021-12-23\",\r\n    \"projectIdentifier\": \"001_p\",\r\n    \"backlog\": {\r\n        \"id\": 1\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -200,6 +200,126 @@
 					"port": "{{port}}",
 					"path": [
 						"backlog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all tasks by project",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{uri}}:{{port}}/task/project/:projectIdentifier",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{uri}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"task",
+						"project",
+						":projectIdentifier"
+					],
+					"variable": [
+						{
+							"key": "projectIdentifier",
+							"value": "001_p"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all tasks hours by project",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{uri}}:{{port}}/task/hours/project/:projectIdentifier",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{uri}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"task",
+						"hours",
+						"project",
+						":projectIdentifier"
+					],
+					"variable": [
+						{
+							"key": "projectIdentifier",
+							"value": "001_p"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all tasks hours by project name and status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{uri}}:{{port}}/task/hours/project/:projectIdentifier/:status",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{uri}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"task",
+						"hours",
+						"project",
+						":projectIdentifier",
+						":status"
+					],
+					"variable": [
+						{
+							"key": "projectIdentifier",
+							"value": "001_p"
+						},
+						{
+							"key": "status",
+							"value": "NotStarted",
+							"description": "task status 'NotStarted' 'InProgress' 'Deleted' 'Completed'"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a task by id and projectIdentifier",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{protocol}}://{{uri}}:{{port}}/task/:taskId/:projectIdentifier",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{uri}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"task",
+						":taskId",
+						":projectIdentifier"
+					],
+					"variable": [
+						{
+							"key": "taskId",
+							"value": "1"
+						},
+						{
+							"key": "projectIdentifier",
+							"value": "001_p"
+						}
 					]
 				}
 			},

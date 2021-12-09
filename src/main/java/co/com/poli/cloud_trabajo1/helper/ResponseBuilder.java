@@ -8,19 +8,21 @@ import static org.springframework.http.HttpStatus.OK;
 @Component
 public class ResponseBuilder {
 
-    public Response success(){
+    public Response success() {
         return Response.builder()
                 .data(OK)
                 .status(OK.value())
                 .build();
     }
-    public Response success(Object data){
+
+    public Response success(Object data) {
         return Response.builder()
                 .data(data)
                 .status(OK.value())
                 .build();
     }
-    public Response failed(Object data){
+
+    public Response failed(Object data) {
         return Response.builder()
                 .data(data)
                 .status(INTERNAL_SERVER_ERROR.value())

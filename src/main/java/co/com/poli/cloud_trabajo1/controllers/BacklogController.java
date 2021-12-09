@@ -24,7 +24,7 @@ public class BacklogController {
     }
 
     @PostMapping
-    public Backlog create(@RequestBody Backlog backlog, BindingResult bindingResult){
+    public Backlog create(@RequestBody Backlog backlog, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong parameter provided");
         }

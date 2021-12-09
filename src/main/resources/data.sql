@@ -1,7 +1,7 @@
 INSERT INTO
   Backlog(id, project_identifier)
 VALUES
-  (1, '001_projectt');
+  (1, '001_p');
 INSERT INTO
   Projects(
     id,
@@ -42,7 +42,7 @@ VALUES
     'First task',
     'Add default data to DB',
     'To look good',
-    'Not Started',
+    'NotStarted',
     1,
     1,
     '2021-12-21',

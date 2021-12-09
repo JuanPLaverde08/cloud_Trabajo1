@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProyectServiceImpl implements  ProyectService{
+public class ProyectServiceImpl implements ProyectService {
 
     @Autowired
     private ProjectRepository repository;
@@ -20,7 +20,8 @@ public class ProyectServiceImpl implements  ProyectService{
 
     @Override
     public boolean isNewProject(Project project) {
-        List<Project> p = repository.getProjectByNameAndIdentifier(project.getProjectName(), project.getProjectIdentifier());
+        List<Project> p = repository.getProjectByNameAndIdentifier(project.getProjectName(),
+                project.getProjectIdentifier());
         return p.isEmpty();
     }
 

@@ -6,10 +6,17 @@ import java.util.List;
 public interface TaskService {
 
     List<ProjectTask> findAll();
-    ProjectTask create(ProjectTask proyectTask);
-    boolean isNewTask(ProjectTask task);
+
     List<ProjectTask> getTasksByProject(String projectIdentifier);
-    // ProjectTask findByStatus(String status, String projectIdentifier);
-    // boolean     delete(Long id, String projectIdentifier);
+
+    ProjectTask create(ProjectTask proyectTask);
+
+    boolean isNewTask(ProjectTask task);
+
+    double getTasksByProjectHours(String projectIdentifier);
+
+    double getTasksHoursByProjectAndStatus(String projectIdentifier, String status);
+
+    boolean deleteTaskByIdAndProject(String taskId, String projectIdentifier);
 
 }

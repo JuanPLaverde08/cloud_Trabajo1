@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BacklogServiceImpl implements BacklogService{
+public class BacklogServiceImpl implements BacklogService {
 
     @Autowired
     private BacklogRepository repository;
