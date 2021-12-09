@@ -16,7 +16,7 @@ VALUES
   (
     1,
     'First Project',
-    '001_projectt',
+    '001_p',
     'This is the first defaul project',
     '2021-12-21',
     '2022-12-1',
@@ -47,6 +47,6 @@ VALUES
     1,
     '2021-12-21',
     '2021-12-22',
-    '001_projectt',
+    '001_p',
     1
   );

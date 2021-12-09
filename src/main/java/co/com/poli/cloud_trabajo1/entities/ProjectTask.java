@@ -18,6 +18,9 @@ import lombok.*;
 @Setter
 @Entity
 @Table(name="Project_Task")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ProjectTask extends BaseEntity {
 
 	@Column(name = "name")
