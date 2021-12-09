@@ -36,4 +36,12 @@ public class TaskController {
         return service.create(projectTask);
     }
 
+    @GetMapping("/project/{projectIdentifier}")
+    public List<ProjectTask> getTasksByProject(@PathVariable String projectIdentifier) {
+        if (projectIdentifier == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Project identifier is required");
+        }
+
+        return service.getTasksByProject(projectIdentifier);
+    }
 }

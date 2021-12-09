@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TaskServiceImpl implements  TaskService{
+public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private ProjectTaskRepository repository;
@@ -30,4 +30,9 @@ public class TaskServiceImpl implements  TaskService{
         return repository.save(proyectTask);
     }
 
+    @Override
+    public List<ProjectTask> getTasksByProject(String projectIdentifier) {
+        System.out.println(projectIdentifier);
+        return repository.getTasksByProject(projectIdentifier);
+    }
 }
