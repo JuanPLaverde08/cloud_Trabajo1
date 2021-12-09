@@ -25,6 +25,11 @@ public class TaskController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ProjectTask create(@RequestBody ProjectTask projectTask, BindingResult bindingResult) {
+
+        if(projectTask.getStatus()!= "NotStarted" || projectTask.getStatus()!= "InProgress"  || projectTask.getStatus()!= "Completed" || projectTask.getStatus()!= "Deleted"){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status parameter was supplied incorrectly");
+        }
+
         if (bindingResult.hasErrors()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong parameter provided");
         }
