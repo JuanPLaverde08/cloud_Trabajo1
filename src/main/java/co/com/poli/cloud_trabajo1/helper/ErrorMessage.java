@@ -9,5 +9,5 @@ import java.util.Map;
 @Data
 @Builder
 public class ErrorMessage {
-    private List<Map<String,String>> messages;
+    private List<Map<String, String>> messages;
 }

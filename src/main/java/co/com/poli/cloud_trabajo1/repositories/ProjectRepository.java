@@ -13,6 +13,5 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 	@Query("SELECT p FROM Project as p WHERE p.projectName = :projectName OR p.projectIdentifier = :projectIdentifier")
 	List<Project> getProjectByNameAndIdentifier(
 			@Param("projectName") String projectName,
-			@Param("projectIdentifier") String projectIdentifier
-	);
+			@Param("projectIdentifier") String projectIdentifier);
 }

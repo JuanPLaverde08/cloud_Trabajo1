@@ -17,7 +17,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name="Project_Task")
+@Table(name = "Project_Task")
 public class ProjectTask extends BaseEntity {
 
 	@Column(name = "name")
@@ -57,7 +57,7 @@ public class ProjectTask extends BaseEntity {
 
 	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name = "backlog_id", referencedColumnName="id")
+	@JoinColumn(name = "backlog_id", referencedColumnName = "id")
 	private Backlog backlog;
 
 	@Override

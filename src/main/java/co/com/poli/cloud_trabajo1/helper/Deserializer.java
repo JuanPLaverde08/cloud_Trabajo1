@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class Deserializer extends StdDeserializer<Date> {
    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
    public Deserializer() {
       this(null);
    }
@@ -22,13 +23,12 @@ public class Deserializer extends StdDeserializer<Date> {
 
    @Override
    public Date deserialize(JsonParser parser, DeserializationContext context)
-      throws IOException, JsonProcessingException {
+         throws IOException, JsonProcessingException {
 
       String date = parser.getText();
       try {
          return formatter.parse(date);
-      }
-      catch (ParseException e) {
+      } catch (ParseException e) {
          e.printStackTrace();
       }
       return null;

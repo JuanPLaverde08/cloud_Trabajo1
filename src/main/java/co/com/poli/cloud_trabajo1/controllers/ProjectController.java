@@ -20,13 +20,13 @@ public class ProjectController {
 	private ProyectService service;
 
 	@GetMapping
-	public List<Project> findAll(){
+	public List<Project> findAll() {
 		return service.findAll();
 	}
 
-  @ResponseStatus(HttpStatus.CREATED)
+	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public Project create(@RequestBody Project project, BindingResult bindingResult){
+	public Project create(@RequestBody Project project, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong parameter provided");
 		}

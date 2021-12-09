@@ -25,13 +25,13 @@ public class TaskController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ProjectTask create(@RequestBody ProjectTask projectTask, BindingResult bindingResult) {
-		    if (bindingResult.hasErrors()) {
-			      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong parameter provided");
-		    }
+        if (bindingResult.hasErrors()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong parameter provided");
+        }
 
-		    if (!service.isNewTask(projectTask)) {
-			      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This task already exists");
-		    }
+        if (!service.isNewTask(projectTask)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This task already exists");
+        }
 
         return service.create(projectTask);
     }
@@ -55,7 +55,7 @@ public class TaskController {
     }
 
     @GetMapping("/hours/project/{projectIdentifier}/{status}")
-    public double getTasksHoursByProjectAndStatus(@PathVariable String projectIdentifier,@PathVariable String status) {
+    public double getTasksHoursByProjectAndStatus(@PathVariable String projectIdentifier, @PathVariable String status) {
         if (projectIdentifier == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Project identifier is required");
         }
@@ -63,8 +63,6 @@ public class TaskController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status is required");
         }
 
-        return service.getTasksHoursByProjectAndStatus(projectIdentifier,status);
+        return service.getTasksHoursByProjectAndStatus(projectIdentifier, status);
     }
-
-    
 }
