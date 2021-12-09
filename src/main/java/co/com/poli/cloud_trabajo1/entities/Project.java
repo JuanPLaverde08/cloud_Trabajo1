@@ -41,7 +41,7 @@ public class Project extends BaseEntity {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "backlog_id", referencedColumnName = "id")
-	@JsonIgnoreProperties(value = { "project" })
+	@JsonIgnoreProperties(value = { "project" }, allowSetters = true)
 	private Backlog backlog;
 
 	@Override
