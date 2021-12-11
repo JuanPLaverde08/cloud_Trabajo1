@@ -5,11 +5,10 @@ import lombok.*;
 import java.util.List;
 
 @Getter
-@Setter 
+@Setter
 public class BacklogDTO implements Serializable{
-	
-	private String projectIdentifier;
+	  private String projectIdentifier;
+    private int taskCount;
     private Project project;
     private List<ProjectTask> projectTask;
-	private int taskCount;
 }

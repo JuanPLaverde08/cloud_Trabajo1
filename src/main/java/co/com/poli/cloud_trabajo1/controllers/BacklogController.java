@@ -11,6 +11,7 @@ import co.com.poli.cloud_trabajo1.entities.BacklogDTO;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/backlog")
@@ -20,23 +21,31 @@ public class BacklogController {
     private BacklogService service;
 
     @GetMapping
-    public List<Backlog> findAll() {
-        return service.findAll();
+    public List<BacklogDTO> findAll() {
+        List<Backlog> bl = service.findAll();
+        List<BacklogDTO> dtoList = new ArrayList<BacklogDTO>();
+
+        for (int i = 0; i < bl.size(); i++) {
+            Backlog b = bl.get(i);
+            BacklogDTO dto = new BacklogDTO();
+
+            dto.setProjectIdentifier(b.getProjectIdentifier());
+            dto.setProject(b.getProject());
+            dto.setProjectTask(b.getProjectTask());
+            dto.setTaskCount(b.getProjectTask().size());
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
     }
 
     @PostMapping
-    public BacklogDTO create(@RequestBody Backlog backlog, BindingResult bindingResult) {
+    public Backlog create(@RequestBody Backlog backlog, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong parameter provided");
         }
-    
-        Backlog b = service.create(backlog);
-        BacklogDTO dto = new BacklogDTO();
-        dto.setProjectIdentifier(b.getProjectIdentifier());
-        dto.setProject(b.getProject());
-        dto.setProjectTask(b.getProjectTask());
-        dto.setTaskCount(b.getProjectTask().size());
 
-        return dto;
+        return service.create(backlog);
     }
 }
