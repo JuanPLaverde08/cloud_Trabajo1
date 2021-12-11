@@ -2,6 +2,7 @@ package co.com.poli.cloud_trabajo1.controllers;
 
 import co.com.poli.cloud_trabajo1.entities.ProjectTask;
 import co.com.poli.cloud_trabajo1.service.TaskService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,17 +26,19 @@ public class TaskController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ProjectTask create(@RequestBody ProjectTask projectTask, BindingResult bindingResult) {
-
-        if(projectTask.getStatus()!= "NotStarted" || projectTask.getStatus()!= "InProgress"  || projectTask.getStatus()!= "Completed" || projectTask.getStatus()!= "Deleted"){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status parameter was supplied incorrectly");
-        }
-
         if (bindingResult.hasErrors()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong parameter provided");
         }
 
         if (!service.isNewTask(projectTask)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This task already exists");
+        }
+
+        String status = projectTask.getStatus();
+
+        if (!StringUtils.equals(status, "NotStarted") && !StringUtils.equals(status, "InProgress") &&
+                !StringUtils.equals(status, "Completed") && !StringUtils.equals(status, "Deleted")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Status parameter was supplied incorrectly");
         }
 
         return service.create(projectTask);
