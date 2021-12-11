@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import co.com.poli.cloud_trabajo1.entities.Backlog;
+import co.com.poli.cloud_trabajo1.entities.BacklogDTO;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -24,11 +25,18 @@ public class BacklogController {
     }
 
     @PostMapping
-    public Backlog create(@RequestBody Backlog backlog, BindingResult bindingResult) {
+    public BacklogDTO create(@RequestBody Backlog backlog, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong parameter provided");
         }
+    
+        Backlog b = service.create(backlog);
+        BacklogDTO dto = new BacklogDTO();
+        dto.setProjectIdentifier(b.getProjectIdentifier());
+        dto.setProject(b.getProject());
+        dto.setProjectTask(b.getProjectTask());
+        dto.setTaskCount(b.getProjectTask().size());
 
-        return service.create(backlog);
+        return dto;
     }
 }
